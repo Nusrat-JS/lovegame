@@ -97,9 +97,13 @@ transform:scale(1);
 }
 
 .heart{
-    position:absolute;
-    font-size:20px;
-    animation:floatUp 8s linear infinite;
+    position: fixed;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 9999;
+    user-select: none;
+    pointer-events: auto;
+    animation: floatUp 8s linear forwards;
 }
 
 @keyframes floatUp{
@@ -230,3 +234,7 @@ height:200px;
 #storyNext{
     display:none;
 }
+
+/* showStory();*/
+
+
