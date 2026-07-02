@@ -3,25 +3,30 @@
    PART 1
 =================================== */
 
+// Screens
 const loadingScreen = document.getElementById("loadingScreen");
 const welcomeScreen = document.getElementById("welcomeScreen");
 const storyScreen = document.getElementById("storyScreen");
 const gameScreen = document.getElementById("gameScreen");
 
+// Buttons
 const brownieBtn = document.getElementById("brownieBtn");
 const otherBtn = document.getElementById("otherBtn");
 
+// Text
 const warningText = document.getElementById("warningText");
-
 const storyText = document.getElementById("storyText");
 const storyNext = document.getElementById("storyNext");
 
+// Floating Hearts Container
 const floatingHearts = document.getElementById("floatingHearts");
 
+// Game
+let collectedHearts = 0;
 
 
 /* ================================
-        LOADING SCREEN
+   LOADING SCREEN
 ================================ */
 
 window.onload = () => {
@@ -31,177 +36,159 @@ window.onload = () => {
     setTimeout(() => {
 
         loadingScreen.classList.add("hidden");
-
         welcomeScreen.classList.remove("hidden");
 
-    },3000);
+    }, 3000);
 
 };
 
 
-
 /* ================================
-      FLOATING HEARTS
+   FLOATING HEARTS
 ================================ */
 
-function createFloatingHearts(){
+function createFloatingHearts() {
 
-    setInterval(()=>{
+    setInterval(() => {
 
-        const heart=document.createElement("div");
+        const heart = document.createElement("div");
 
-        heart.className="heart";
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
 
-        heart.innerHTML="❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (20 + Math.random() * 25) + "px";
+        heart.style.animationDuration = (5 + Math.random() * 5) + "s";
 
-        heart.style.left=Math.random()*100+"vw";
+        // Click to collect
+        heart.addEventListener("click", () => {
 
-        heart.style.fontSize=(20+Math.random()*25)+"px";
+            collectedHearts++;
 
-        heart.style.animationDuration=(5+Math.random()*5)+"s";
-
-        floatingHearts.appendChild(heart);
-
-        setTimeout(()=>{
+            document.getElementById("score").textContent =
+                `${collectedHearts} / 10`;
 
             heart.remove();
 
-        },9000);
+            if (collectedHearts >= 10) {
 
-    },350);
+                alert("You collected all the hearts! ❤️");
+
+            }
+
+        });
+
+        floatingHearts.appendChild(heart);
+
+        setTimeout(() => {
+
+            heart.remove();
+
+        }, 9000);
+
+    }, 350);
 
 }
 
 
-
 /* ================================
-        BROWNIE CHECK
+   BROWNIE CHECK
 ================================ */
 
-brownieBtn.onclick=()=>{
+brownieBtn.onclick = () => {
 
     welcomeScreen.classList.add("hidden");
-
     storyScreen.classList.remove("hidden");
 
     startStory();
 
 };
 
+otherBtn.onclick = () => {
 
-
-otherBtn.onclick=()=>{
-
-    warningText.innerHTML=
-
-    "🚫 Nice try...<br><br>This website was handmade for only one person.<br><br>Go call Brownie. ❤️";
+    warningText.innerHTML =
+        "🚫 Nice try...<br><br>This website was handmade for only one person.<br><br>Go call Brownie. ❤️";
 
 };
 
 
-
 /* ================================
-          STORY
+   STORY
 ================================ */
 
-const storyLines=[
+const storyLines = [
 
-"Hi Brownie... 🌸",
-
-"Before today begins...",
-
-"I wanted to give you something different.",
-
-"Something you could keep forever.",
-
-"Not flowers...",
-
-"Not chocolates...",
-
-"But a tiny world I built myself.",
-
-"So every click...",
-
-"Every animation...",
-
-"And every little heart...",
-
-"Reminds you how important you are to me. ❤️"
+    "Hi Brownie... 🌸",
+    "Before today begins...",
+    "I wanted to give you something different.",
+    "Something you could keep forever.",
+    "Not flowers...",
+    "Not chocolates...",
+    "But a tiny world I built myself.",
+    "So every click...",
+    "Every animation...",
+    "And every little heart...",
+    "Reminds you how important you are to me. ❤️"
 
 ];
 
+let currentLine = 0;
 
+function startStory() {
 
-let currentLine=0;
-
-
-
-function startStory(){
-
-    storyText.innerHTML="";
-
+    storyText.innerHTML = "";
     typeLine();
 
 }
 
+function typeLine() {
 
+    if (currentLine >= storyLines.length) {
 
-function typeLine(){
-
-    if(currentLine>=storyLines.length){
-
-        storyNext.style.display="inline-block";
-
+        storyNext.style.display = "inline-block";
         return;
 
     }
 
-    let text=storyLines[currentLine];
+    let text = storyLines[currentLine];
+    let i = 0;
 
-    let i=0;
-
-    let paragraph=document.createElement("p");
-
+    let paragraph = document.createElement("p");
     storyText.appendChild(paragraph);
 
+    let typing = setInterval(() => {
 
-
-    let typing=setInterval(()=>{
-
-        paragraph.innerHTML+=text.charAt(i);
+        paragraph.innerHTML += text.charAt(i);
 
         i++;
 
-        if(i>=text.length){
+        if (i >= text.length) {
 
             clearInterval(typing);
 
             currentLine++;
 
-            setTimeout(typeLine,800);
+            setTimeout(typeLine, 800);
 
         }
 
-    },45);
+    }, 45);
 
 }
 
 
-
 /* ================================
-     CONTINUE TO GAME
+   CONTINUE TO GAME
 ================================ */
 
-storyNext.onclick=()=>{
+storyNext.onclick = () => {
 
     storyScreen.classList.add("hidden");
-
     gameScreen.classList.remove("hidden");
 
 };
 
 
-
 /* =================================
-      PART 1 COMPLETE
+   PART 1 COMPLETE
 ================================= */
