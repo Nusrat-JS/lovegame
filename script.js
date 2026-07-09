@@ -1,76 +1,68 @@
 /* ===================================
-   Happy Birthday Brownie ❤️
-   script.js - PART 1
+Happy Birthday Brownie ❤️
+script.js
 =================================== */
 
-// =======================
+// ===============================
 // Screens
-// =======================
+// ===============================
 
 const loadingScreen = document.getElementById("loadingScreen");
 const welcomeScreen = document.getElementById("welcomeScreen");
 const storyScreen = document.getElementById("storyScreen");
 const gameScreen = document.getElementById("gameScreen");
 
-// =======================
+// ===============================
 // Buttons
-// =======================
+// ===============================
 
 const brownieBtn = document.getElementById("brownieBtn");
 const otherBtn = document.getElementById("otherBtn");
 const storyNext = document.getElementById("storyNext");
 
-// =======================
+// ===============================
 // Elements
-// =======================
+// ===============================
 
 const warningText = document.getElementById("warningText");
 const storyText = document.getElementById("storyText");
 const score = document.getElementById("score");
 const floatingHearts = document.getElementById("floatingHearts");
 
-// =======================
+// ===============================
 // Variables
-// =======================
+// ===============================
 
 let collectedHearts = 0;
 let currentStoryLine = 0;
+let heartInterval = null;
 
-// =======================
-// Story
-// =======================
+// ===============================
+// Story Lines
+// ===============================
 
 const storyLines = [
-
     "Hi Brownie... 🌸",
-
     "Before today begins...",
-
     "I wanted to make something special...",
-
     "Not flowers...",
-
     "Not chocolates...",
-
     "But a little world made only for you.",
-
     "Every click...",
-
     "Every heart...",
-
     "Every animation...",
-
     "Was created with love. ❤️"
-
 ];
 
-// =======================
-// Loading
-// =======================
+// ===============================
+// Loading Screen
+// ===============================
 
 window.onload = function () {
 
-    setTimeout(() => {
+    storyNext.style.display = "none";
+
+    setTimeout(function () {
 
         loadingScreen.classList.add("hidden");
         welcomeScreen.classList.remove("hidden");
@@ -79,29 +71,29 @@ window.onload = function () {
 
 };
 
-// =======================
+// ===============================
 // Welcome Buttons
-// =======================
+// ===============================
 
-brownieBtn.onclick = () => {
+brownieBtn.addEventListener("click", function () {
 
     welcomeScreen.classList.add("hidden");
     storyScreen.classList.remove("hidden");
 
     startStory();
 
-};
+});
 
-otherBtn.onclick = () => {
+otherBtn.addEventListener("click", function () {
 
     warningText.innerHTML =
         "🚫 Sorry...<br><br>This website was handmade only for Brownie ❤️";
 
-};
+});
 
-// =======================
+// ===============================
 // Story Typing
-// =======================
+// ===============================
 
 function startStory() {
 
@@ -121,17 +113,16 @@ function typeNextLine() {
 
     }
 
-    const p = document.createElement("p");
-
-    storyText.appendChild(p);
-
-    let i = 0;
+    const paragraph = document.createElement("p");
+    storyText.appendChild(paragraph);
 
     const line = storyLines[currentStoryLine];
 
-    const typing = setInterval(() => {
+    let i = 0;
 
-        p.innerHTML += line.charAt(i);
+    const typing = setInterval(function () {
+
+        paragraph.textContent += line.charAt(i);
 
         i++;
 
@@ -149,18 +140,18 @@ function typeNextLine() {
 
 }
 
-// =======================
-// Continue
-// =======================
+// ===============================
+// Continue Button
+// ===============================
 
-storyNext.onclick = () => {
+storyNext.addEventListener("click", function () {
 
     storyScreen.classList.add("hidden");
     gameScreen.classList.remove("hidden");
 
     startHeartGame();
 
-};
+});
 
 // =======================
 // Heart Game
