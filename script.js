@@ -1,50 +1,45 @@
-/* =====================================
+/* ===================================
    Happy Birthday Brownie ❤️
-   script.js
-===================================== */
+   script.js - PART 1
+=================================== */
 
-// ==============================
+// ===============================
 // Screens
-// ==============================
+// ===============================
 
 const loadingScreen = document.getElementById("loadingScreen");
 const welcomeScreen = document.getElementById("welcomeScreen");
 const storyScreen = document.getElementById("storyScreen");
 const gameScreen = document.getElementById("gameScreen");
-const galleryScreen = document.getElementById("galleryScreen");
-const letterScreen = document.getElementById("letterScreen");
 
-// ==============================
+// ===============================
 // Buttons
-// ==============================
+// ===============================
 
 const brownieBtn = document.getElementById("brownieBtn");
 const otherBtn = document.getElementById("otherBtn");
 const storyNext = document.getElementById("storyNext");
-const galleryNext = document.getElementById("galleryNext");
-const letterNext = document.getElementById("letterNext");
 
-// ==============================
+// ===============================
 // Elements
-// ==============================
+// ===============================
 
 const warningText = document.getElementById("warningText");
 const storyText = document.getElementById("storyText");
-const letterText = document.getElementById("letterText");
 const score = document.getElementById("score");
 const floatingHearts = document.getElementById("floatingHearts");
 
-// ==============================
+// ===============================
 // Variables
-// ==============================
+// ===============================
 
 let collectedHearts = 0;
 let heartInterval = null;
-let currentStory = 0;
+let currentStoryLine = 0;
 
-// ==============================
-// Story
-// ==============================
+// ===============================
+// Story Lines
+// ===============================
 
 const storyLines = [
     "Hi Brownie... 🌸",
@@ -54,18 +49,16 @@ const storyLines = [
     "Not chocolates...",
     "But a little world made only for you.",
     "Every click...",
-    "Every heart...",
+    "Every little heart...",
     "Every animation...",
     "Was created with love. ❤️"
 ];
 
-// ==============================
-// Loading
-// ==============================
+// ===============================
+// Loading Screen
+// ===============================
 
-window.addEventListener("load", () => {
-
-    storyNext.style.display = "none";
+window.onload = () => {
 
     setTimeout(() => {
 
@@ -74,11 +67,11 @@ window.addEventListener("load", () => {
 
     }, 2500);
 
-});
+};
 
-// ==============================
+// ===============================
 // Welcome Buttons
-// ==============================
+// ===============================
 
 brownieBtn.addEventListener("click", () => {
 
@@ -96,14 +89,15 @@ otherBtn.addEventListener("click", () => {
 
 });
 
-// ==============================
+// ===============================
 // Story Typing
-// ==============================
+// ===============================
 
 function startStory() {
 
+    currentStoryLine = 0;
     storyText.innerHTML = "";
-    currentStory = 0;
+    storyNext.style.display = "none";
 
     typeLine();
 
@@ -111,7 +105,7 @@ function startStory() {
 
 function typeLine() {
 
-    if (currentStory >= storyLines.length) {
+    if (currentStoryLine >= storyLines.length) {
 
         storyNext.style.display = "inline-block";
         return;
@@ -121,7 +115,7 @@ function typeLine() {
     const p = document.createElement("p");
     storyText.appendChild(p);
 
-    const line = storyLines[currentStory];
+    const line = storyLines[currentStoryLine];
 
     let i = 0;
 
@@ -135,7 +129,7 @@ function typeLine() {
 
             clearInterval(typing);
 
-            currentStory++;
+            currentStoryLine++;
 
             setTimeout(typeLine, 700);
 
@@ -145,9 +139,9 @@ function typeLine() {
 
 }
 
-// ==============================
-// Continue
-// ==============================
+// ===============================
+// Continue Button
+// ===============================
 
 storyNext.addEventListener("click", () => {
 
@@ -158,9 +152,9 @@ storyNext.addEventListener("click", () => {
 
 });
 
-// ==============================
+// ===============================
 // Heart Game
-// ==============================
+// ===============================
 
 function startHeartGame() {
 
@@ -171,152 +165,66 @@ function startHeartGame() {
     floatingHearts.innerHTML = "";
 
     if (heartInterval) {
-
         clearInterval(heartInterval);
-
     }
 
-    heartInterval = setInterval(createHeart, 600);
+    createHearts();
 
 }
 
-// ==============================
+// ===============================
 // Create Hearts
-// ==============================
+// ===============================
 
-function createHeart() {
+function createHearts() {
 
-    if (collectedHearts >= 10) {
+    heartInterval = setInterval(() => {
 
-        clearInterval(heartInterval);
+        if (collectedHearts >= 10) {
 
-        setTimeout(() => {
+            clearInterval(heartInterval);
 
-            gameScreen.classList.add("hidden");
+            alert("🎉 You collected all 10 hearts!");
 
-            if (galleryScreen) {
+            return;
 
-                galleryScreen.classList.remove("hidden");
+        }
 
-            }
+        const heart = document.createElement("div");
 
-        }, 500);
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
 
-        return;
+        heart.style.left = Math.random() * 90 + "vw";
+        heart.style.fontSize = (24 + Math.random() * 20) + "px";
+        heart.style.animationDuration = (5 + Math.random() * 3) + "s";
 
-    }
+        heart.addEventListener("click", function (e) {
 
-    const heart = document.createElement("div");
+            e.stopPropagation();
 
-    heart.className = "heart";
-    heart.textContent = "❤️";
+            collectedHearts++;
 
-    heart.style.left = Math.random() * 90 + "vw";
-    heart.style.fontSize = (22 + Math.random() * 20) + "px";
-    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
-
-    function collectHeart(e) {
-
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (!heart.parentNode) return;
-
-        collectedHearts++;
-
-        score.textContent = `${collectedHearts} / 10`;
-
-        heart.remove();
-
-    }
-
-    heart.addEventListener("click", collectHeart);
-    heart.addEventListener("touchstart", collectHeart, { passive: false });
-
-    floatingHearts.appendChild(heart);
-
-    setTimeout(() => {
-
-        if (heart.parentNode) {
+            score.textContent = `${collectedHearts} / 10`;
 
             heart.remove();
 
-        }
+        });
 
-    }, 7000);
+        floatingHearts.appendChild(heart);
 
-}
+        setTimeout(() => {
 
-// ==============================
-// Gallery
-// ==============================
+            if (heart.parentNode) {
+                heart.remove();
+            }
 
-if (galleryNext) {
+        }, 8000);
 
-    galleryNext.addEventListener("click", () => {
-
-        galleryScreen.classList.add("hidden");
-        letterScreen.classList.remove("hidden");
-
-        typeLetter();
-
-    });
+    }, 500);
 
 }
 
-// ==============================
-// Letter
-// ==============================
-
-const letterMessage =
-`Happy Birthday, Brownie ❤️
-
-I don't know if this little website is perfect...
-
-But every part of it was made while thinking about you.
-
-I hope every smile,
-every click,
-and every little heart,
-
-reminds you how special you are.
-
-Happy Birthday. ❤️`;
-
-function typeLetter() {
-
-    if (!letterText) return;
-
-    letterText.textContent = "";
-
-    let i = 0;
-
-    const typing = setInterval(() => {
-
-        letterText.textContent += letterMessage.charAt(i);
-
-        i++;
-
-        if (i >= letterMessage.length) {
-
-            clearInterval(typing);
-
-        }
-
-    }, 35);
-
-}
-
-// ==============================
-// Restart
-// ==============================
-
-if (letterNext) {
-
-    letterNext.addEventListener("click", () => {
-
-        location.reload();
-
-    });
-
-}
+/* ===================================
+   END OF PART 1
+=================================== */
