@@ -119,8 +119,15 @@ button:hover{
     position:fixed;
     inset:0;
     overflow:hidden;
+    z-index:99999;
     pointer-events:none;
-    z-index:9999;
+}
+
+.heart{
+    position:fixed;
+    pointer-events:auto;
+    cursor:pointer;
+    z-index:100000;
 }
 
 .heart{
