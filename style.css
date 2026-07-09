@@ -119,15 +119,17 @@ button:hover{
     position:fixed;
     inset:0;
     overflow:hidden;
+    pointer-events:none;
     z-index:9999;
 }
 
 .heart{
     position:fixed;
-    bottom:-50px;
+    bottom:-60px;
     cursor:pointer;
     user-select:none;
     pointer-events:auto;
+    z-index:10000;
     animation:floatUp linear forwards;
 }
 
@@ -180,6 +182,7 @@ button:hover{
     border-radius:20px;
     position:relative;
     overflow:hidden;
+    margin-top:20px;
     box-shadow:0 15px 40px rgba(0,0,0,.15);
 }
 

@@ -2,162 +2,181 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Happy Birthday Brownie ❤️</title>
+    <title>Happy Birthday Brownie ❤️</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
     <!-- Floating Hearts -->
-<div id="floatingHearts"></div>
+    <div id="floatingHearts"></div>
 
-<!-- Loading Screen -->
-<section id="loadingScreen">
+    <!-- ========================= -->
+    <!-- Loading Screen -->
+    <!-- ========================= -->
 
-    <div class="loaderHeart">❤️</div>
+    <section id="loadingScreen">
 
-    <h1>Loading Something Special...</h1>
+        <div class="loaderHeart">❤️</div>
 
-    <p>Made only for Brownie 🌸</p>
+        <h1>Loading Something Special...</h1>
 
-</section>
+        <p>Made only for Brownie 🌸</p>
 
+    </section>
 
-<!-- Welcome Screen -->
-<section id="welcomeScreen" class="hidden">
+    <!-- ========================= -->
+    <!-- Welcome Screen -->
+    <!-- ========================= -->
 
-    <h1>Hello... 🌸</h1>
+    <section id="welcomeScreen" class="hidden">
 
-    <h2>Who is visiting today?</h2>
+        <h1>Hello... 🌸</h1>
 
-    <button id="brownieBtn">
-        ❤️ I'm Brownie
-    </button>
+        <h2>Who is visiting today?</h2>
 
-    <button id="otherBtn">
-        🤨 Someone Else
-    </button>
+        <button id="brownieBtn">
+            ❤️ I'm Brownie
+        </button>
 
-    <p id="warningText"></p>
+        <button id="otherBtn">
+            🤨 Someone Else
+        </button>
 
-</section>
+        <p id="warningText"></p>
 
+    </section>
 
-<!-- Story Screen -->
-<section id="storyScreen" class="hidden">
+    <!-- ========================= -->
+    <!-- Story -->
+    <!-- ========================= -->
 
-    <h1>Before We Begin...</h1>
+    <section id="storyScreen" class="hidden">
 
-    <div id="storyText"></div>
+        <h1>Before We Begin...</h1>
 
-    <button id="storyNext">
-        Continue ❤️
-    </button>
+        <div id="storyText"></div>
 
-</section>
+        <button id="storyNext">
+            Continue ❤️
+        </button>
 
+    </section>
 
-<!-- Game Screen -->
-<section id="gameScreen" class="hidden">
+    <!-- ========================= -->
+    <!-- Heart Game -->
+    <!-- ========================= -->
 
-    <h2>Catch 10 Hearts ❤️</h2>
+    <section id="gameScreen" class="hidden">
 
-    <p>Collect all the hearts to unlock your surprise.</p>
+        <h2>Catch 10 Hearts ❤️</h2>
 
-    <h1 id="score">0 / 10</h1>
+        <p>Collect all the hearts to unlock your surprise.</p>
 
-    <div id="gameArea">
+        <h1 id="score">0 / 10</h1>
 
-        <div id="player">
+        <div id="gameArea">
+
+            <div id="player">
+                ❤️
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- Gallery -->
+    <!-- ========================= -->
+
+    <section id="galleryScreen" class="hidden">
+
+        <h1>Here's Some Of My Queen's Photos 📸</h1>
+
+        <div class="gallery">
+
+            <img src="assets/brownie1.jpg" alt="Brownie">
+
+            <img src="assets/brownie2.jpg" alt="Brownie">
+
+            <img src="assets/brownie3.jpg" alt="Brownie">
+
+            <img src="assets/brownie4.jpg" alt="Brownie">
+
+        </div>
+
+        <button id="galleryNext">
+            Continue ❤️
+        </button>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- Love Letter -->
+    <!-- ========================= -->
+
+    <section id="letterScreen" class="hidden">
+
+        <h1>To My Brownie 💌</h1>
+
+        <div id="letterText"></div>
+
+        <button id="letterNext">
+            One Last Surprise ✨
+        </button>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- Ending -->
+    <!-- ========================= -->
+
+    <section id="endingScreen" class="hidden">
+
+        <h1>Happy Birthday Brownie ❤️</h1>
+
+        <div id="bigHeart">
             ❤️
         </div>
 
-    </div>
+        <img
+            id="memoryPhoto"
+            src="assets/brownie1.jpg"
+            alt="Brownie"
+        >
 
-</section>
+        <p id="loveMessage"></p>
 
+        <button id="restartBtn">
+            Read Again ❤️
+        </button>
 
-<!-- Gallery -->
-<section id="galleryScreen" class="hidden">
+    </section>
 
-    <h1>Here's Some Of My Queen's Photos 📸</h1>
+    <!-- ========================= -->
+    <!-- Background Music -->
+    <!-- ========================= -->
 
-    <div class="gallery">
+    <audio id="bgMusic" loop>
 
-        <img src="assets/brownie1.jpg" alt="Brownie">
+        <source src="assets/birthday.mp3" type="audio/mpeg">
 
-        <img src="assets/brownie2.jpg" alt="Brownie">
+        Your browser does not support audio.
 
-        <img src="assets/brownie3.jpg" alt="Brownie">
+    </audio>
 
-        <img src="assets/brownie4.jpg" alt="Brownie">
-
-    </div>
-
-    <button id="galleryNext">
-        Continue ❤️
-    </button>
-
-</section>
-
-
-<!-- Letter -->
-<section id="letterScreen" class="hidden">
-
-    <h1>To My Brownie 💌</h1>
-
-    <div id="letterText"></div>
-
-    <button id="letterNext">
-        One Last Surprise ✨
-    </button>
-
-</section>
-
-
-<!-- Ending -->
-<section id="endingScreen" class="hidden">
-
-    <h1>Happy Birthday Brownie ❤️</h1>
-
-    <div id="bigHeart">
-        ❤️
-    </div>
-
-    <img
-        id="memoryPhoto"
-        src="assets/brownie1.jpg"
-        alt="Brownie"
-    >
-
-    <p id="loveMessage"></p>
-
-    <button id="restartBtn">
-        Read Again ❤️
-    </button>
-
-</section>
-
-
-<!-- Background Music -->
-<audio id="bgMusic" loop>
-
-    <source src="assets/birthday.mp3" type="audio/mpeg">
-
-</audio>
-
-
-<!-- JavaScript -->
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
