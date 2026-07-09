@@ -180,15 +180,13 @@ function createHearts() {
 
     heartInterval = setInterval(() => {
 
-        if (collectedHearts >= 10) {
+       if (collectedHearts >= 10) {
 
-            clearInterval(heartInterval);
+    gameCompleted();
 
-            alert("🎉 You collected all 10 hearts!");
+    return;
+}
 
-            return;
-
-        }
 
         const heart = document.createElement("div");
 
