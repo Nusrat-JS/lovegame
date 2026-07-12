@@ -1,134 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
-<title>Happy Birthday Brownie ❤️</title>
-<meta name="description" content="A little world built only for Brownie." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Brownie ❤️</title>
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 
-<link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<!-- Ambient canvas: floating hearts + mouse sparkle, lives behind every screen -->
-<canvas id="ambient-canvas" aria-hidden="true"></canvas>
+    <!-- Floating Hearts -->
+    <div id="floatingHearts"></div>
 
-<!-- ============ PAGE 1 — LOADING SCREEN ============ -->
-<section id="loading-screen" class="screen active" aria-label="Loading">
-  <div class="loading-heart" aria-hidden="true">
-    <svg viewBox="0 0 32 29" class="heart-svg">
-      <path d="M16 29 C16 29 0 18.5 0 8.7 C0 2.8 4.6 0 8.8 0 C12 0 14.8 1.9 16 4.9 C17.2 1.9 20 0 23.2 0 C27.4 0 32 2.8 32 8.7 C32 18.5 16 29 16 29Z"/>
-    </svg>
-  </div>
-  <p class="loading-title">Loading Something Special...</p>
-  <p class="loading-sub">Made only for Brownie 🌸</p>
-  <div class="loading-bar"><div class="loading-bar-fill" id="loading-bar-fill"></div></div>
-</section>
+    <!-- Loading Screen -->
+    <section id="loadingScreen">
 
-<!-- ============ PAGE 2 — WELCOME SCREEN ============ -->
-<section id="welcome-screen" class="screen" aria-label="Welcome">
-  <div class="glass-card fade-in-up">
-    <p class="eyebrow">Before we begin</p>
-    <h1 class="title-script">Who is visiting today?</h1>
-    <div class="btn-row">
-      <button id="btn-brownie" class="btn btn-primary" type="button">❤️ I'm Brownie</button>
-      <button id="btn-someone-else" class="btn btn-ghost" type="button">🤨 Someone Else</button>
-    </div>
-  </div>
-</section>
+        <div class="loaderHeart">❤️</div>
 
-<!-- Someone-else gate -->
-<section id="someone-else-screen" class="screen" aria-label="Private">
-  <div class="glass-card fade-in-up">
-    <p class="title-script small">This website was handmade for only one special person.</p>
-    <button id="btn-go-back" class="btn btn-ghost" type="button">← Go back</button>
-  </div>
-</section>
+        <h1>Loading Something Special...</h1>
 
-<!-- ============ PAGE 3 — STORY ============ -->
-<section id="story-screen" class="screen" aria-label="Story">
-  <div class="glass-card story-card">
-    <div id="story-lines" class="story-lines" aria-live="polite"></div>
-    <button id="btn-story-continue" class="btn btn-primary hidden" type="button">Continue →</button>
-  </div>
-</section>
+        <p>Made only for Brownie 🌸</p>
 
-<!-- ============ PAGE 4 — MINI HEART GAME ============ -->
-<section id="game-screen" class="screen" aria-label="Heart Game">
-  <div class="game-wrap">
-    <p class="eyebrow">A tiny game, for a big heart</p>
-    <h2 class="title-script">Catch 10 hearts for me</h2>
-    <div class="score-pill" id="score-pill">0 / 10</div>
-    <div class="game-field" id="game-field" tabindex="0" aria-label="Click the floating hearts to collect them"></div>
-  </div>
-</section>
+    </section>
 
-<!-- ============ PAGE 5 — GALLERY ============ -->
-<section id="gallery-screen" class="screen" aria-label="Gallery">
-  <div class="gallery-wrap">
-    <p class="eyebrow">Moments I keep replaying</p>
-    <h2 class="title-script">Our little gallery</h2>
-    <div class="gallery-grid" id="gallery-grid">
-      <figure class="gallery-item"><img src="assets/brownie1.jpg" alt="A memory of us, one" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')"><span class="fallback-heart">💗</span></figure>
-      <figure class="gallery-item"><img src="assets/brownie2.jpg" alt="A memory of us, two" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')"><span class="fallback-heart">💞</span></figure>
-      <figure class="gallery-item"><img src="assets/brownie3.jpg" alt="A memory of us, three" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')"><span class="fallback-heart">💕</span></figure>
-      <figure class="gallery-item"><img src="assets/brownie4.jpg" alt="A memory of us, four" loading="lazy" onerror="this.parentElement.classList.add('img-fallback')"><span class="fallback-heart">💖</span></figure>
-    </div>
-    <button id="btn-gallery-continue" class="btn btn-primary" type="button">Continue →</button>
-  </div>
-</section>
 
-<!-- ============ PAGE 6 — LOVE LETTER ============ -->
-<section id="letter-screen" class="screen" aria-label="Love Letter">
-  <div class="glass-card letter-card">
-    <p class="eyebrow">A letter, just for you</p>
-    <div id="letter-text" class="letter-text" aria-live="polite"></div>
-    <button id="btn-letter-continue" class="btn btn-primary hidden" type="button">Continue →</button>
-  </div>
-</section>
+    <!-- Welcome Screen -->
+    <section id="welcomeScreen" class="hidden">
 
-<!-- ============ PAGE 7 — BIRTHDAY CELEBRATION ============ -->
-<section id="celebration-screen" class="screen" aria-label="Birthday Celebration">
-  <canvas id="fireworks-canvas" aria-hidden="true"></canvas>
-  <div class="balloons" id="balloons" aria-hidden="true"></div>
-  <div class="celebration-content">
-    <div class="big-heart" aria-hidden="true">
-      <svg viewBox="0 0 32 29" class="heart-svg">
-        <path d="M16 29 C16 29 0 18.5 0 8.7 C0 2.8 4.6 0 8.8 0 C12 0 14.8 1.9 16 4.9 C17.2 1.9 20 0 23.2 0 C27.4 0 32 2.8 32 8.7 C32 18.5 16 29 16 29Z"/>
-      </svg>
-    </div>
-    <h1 class="title-script huge">Happy Birthday Brownie ❤️</h1>
-    <p class="blessing">May Allah bless your life with happiness, peace, and endless smiles.</p>
-    <button id="btn-play-music" class="btn btn-ghost" type="button">🎵 Play our song</button>
-    <button id="btn-celebration-continue" class="btn btn-primary" type="button">One last thing →</button>
-  </div>
-  <audio id="birthday-audio" src="assets/birthday.mp3" loop preload="none"></audio>
-</section>
+        <h1>Hello... 🌸</h1>
 
-<!-- ============ PAGE 8 — FINAL SURPRISE ============ -->
-<section id="surprise-screen" class="screen" aria-label="Final Surprise">
-  <div class="glass-card surprise-card" id="surprise-card">
-    <div class="frame-glow">
-      <div class="frame-photo" id="frame-photo">
-        <img src="assets/brownie1.jpg" alt="You" onerror="this.parentElement.classList.add('img-fallback')">
-        <span class="fallback-heart">💗</span>
-      </div>
-    </div>
-    <h2 class="title-script">You are my favorite person</h2>
-    <p class="final-message" id="final-message"></p>
-    <div class="btn-row">
-      <button id="btn-read-again" class="btn btn-ghost" type="button">❤️ Read Again</button>
-      <button id="btn-download" class="btn btn-primary" type="button">📸 Download Memory Screenshot</button>
-    </div>
-  </div>
-</section>
+        <h2>Who is visiting today?</h2>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="script.js"></script>
+        <button id="brownieBtn">
+            ❤️ I'm Brownie
+        </button>
+
+        <button id="otherBtn">
+            🤨 Someone Else
+        </button>
+
+        <p id="warningText"></p>
+
+    </section>
+
+
+    <!-- Intro Story -->
+    <section id="storyScreen" class="hidden">
+
+        <h1>Before We Begin...</h1>
+
+        <div id="storyText"></div>
+
+        <button id="storyNext">
+            Continue ❤️
+        </button>
+
+    </section>
+
+
+    <!-- Mini Game -->
+    <section id="gameScreen" class="hidden">
+
+        <h1>Catch 10 Hearts ❤️</h1>
+
+        <p>
+            Collect all the hearts to unlock your surprise.
+        </p>
+
+        <h2 id="score">
+            0 / 10
+        </h2>
+
+        <div id="gameArea">
+
+            <div id="player">
+                ❤️
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Photo Gallery -->
+    <section id="galleryScreen" class="hidden">
+
+        <h1>Our Favorite Memories 📸</h1>
+
+        <div class="gallery">
+
+            <img src="assets/images/Brownie1.jpg" alt="Brownie">
+
+            <img src="assets/images/Brownie2.jpg" alt="Brownie">
+
+            <img src="assets/images/Brownie3.jpg" alt="Brownie">
+
+            <img src="assets/images/Brownie4.jpg" alt="Brownie">
+
+        </div>
+
+        <button id="galleryNext">
+            Continue ❤️
+        </button>
+
+    </section>
+
+
+    <!-- Love Letter -->
+    <section id="letterScreen" class="hidden">
+
+        <h1>To My Brownie 💌</h1>
+
+        <div id="letterText"></div>
+
+        <button id="letterNext">
+            One Last Surprise ✨
+        </button>
+
+    </section>
+
+
+    <!-- Ending -->
+    <section id="endingScreen" class="hidden">
+
+        <h1>
+            Happy Birthday Brownie ❤️
+        </h1>
+
+        <div id="bigHeart">
+            ❤️
+        </div>
+
+        <img id="memoryPhoto"
+            src="assets/images/Brownie1.jpg"
+            alt="Brownie">
+
+        <p id="loveMessage"></p>
+
+        <button id="restartBtn">
+            Read Again ❤️
+        </button>
+
+    </section>
+
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+
+        <source src="assets/music/birthday.mp3" type="audio/mpeg">
+
+    </audio>
+
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
